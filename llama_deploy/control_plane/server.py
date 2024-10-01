@@ -185,9 +185,21 @@ class ControlPlaneServer(BaseControlPlane):
             tags=["Sessions"],
         )
         self.app.add_api_route(
+            "/sessions",
+            self.create_session,
+            methods=["POST"],
+            tags=["Sessions"],
+        )
+        self.app.add_api_route(
             "/sessions/{session_id}/delete",
             self.delete_session,
             methods=["POST"],
+            tags=["Sessions"],
+        )
+        self.app.add_api_route(
+            "/sessions/{session_id}",
+            self.delete_session,
+            methods=["DELETE"],
             tags=["Sessions"],
         )
         self.app.add_api_route(
